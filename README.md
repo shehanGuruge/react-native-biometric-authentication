@@ -1,4 +1,4 @@
-# React Native Touch ID
+# React Native Biometric Authentication (react-native-biometric-authentication)
 
 [![react-native version](https://img.shields.io/badge/react--native-0.57-green.svg?style=flat-square)](https://github.com/facebook/react-native/releases)
 [![npm version](https://img.shields.io/npm/v/react-native-touch-id.svg?style=flat-square)](https://www.npmjs.com/package/react-native-touch-id)
