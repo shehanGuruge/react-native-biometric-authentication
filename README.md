@@ -28,13 +28,13 @@ Please review all changes in the [Changelog](https://github.com/naoufal/react-na
 ## Install
 
 ```shell
-npm i --save react-native-touch-id
+npm i --save react-native-biometric-authentication
 ```
 
 or
 
 ```shell
-yarn add react-native-touch-id
+yarn add react-native-biometric-authentication
 ```
 
 ## Support
@@ -52,7 +52,7 @@ In order to use Biometric Authentication, you must first link the library to you
 Use the built-in command:
 
 ```shell
-react-native link react-native-touch-id
+react-native link react-native-biometric-authentication
 ```
 
 #### Using Cocoapods (iOS only)
@@ -60,7 +60,7 @@ react-native link react-native-touch-id
 On iOS you can also link package by updating your podfile
 
 ```ruby
-pod 'TouchID', :path => "#{node_modules_path}/react-native-touch-id"
+pod 'TouchID', :path => "#{node_modules_path}/react-native-biometric-authentication"
 ```
 
 and then run
@@ -77,7 +77,7 @@ There's excellent documentation on how to do this in the [React Native Docs](htt
 
 iOS and Android differ slightly in their TouchID authentication.
 
-On Android you can customize the title and color of the pop-up by passing in the **optional config object** with a color and title key to the `authenticate` method. Even if you pass in the config object, iOS **does not** allow you change the color nor the title of the pop-up. iOS does support `passcodeFallback` as an option, which when set to `true` will allow users to use their device pin - useful for people with Face / Touch ID disabled. Passcode fallback only happens if the device does not have touch id or face id enabled.
+On Android you can customize the title and color of the pop-up by passing in the **optional config object** with a color and title key to the `authenticate` method. Further, you can disable the alert in android and implement your own UI in react-native. (Please note: For in display fingerprint embedded devices the native fingerprint sensor will popup on top of your customized UI).Even if you pass in the config object, iOS **does not** allow you change the color nor the title of the pop-up. iOS does support `passcodeFallback` as an option, which when set to `true` will allow users to use their device pin - useful for people with Face / Touch ID disabled. Passcode fallback only happens if the device does not have touch id or face id enabled.
 
 Error handling is also different between the platforms, with iOS currently providing much more descriptive error codes.
 
@@ -103,19 +103,19 @@ In your `Info.plist`:
 Once you've linked the library, you'll want to make it available to your app by requiring it:
 
 ```js
-var TouchID = require('react-native-touch-id');
+var BiometricAuthenticator = require('react-native-biometric-authentication');
 ```
 
 or
 
 ```js
-import TouchID from 'react-native-touch-id';
+import BiometricAuthenticator from 'react-native-biometric-authentication';
 ```
 
 Requesting Face ID/Touch ID Authentication is as simple as calling:
 
 ```js
-TouchID.authenticate('to demo this react-native component', optionalConfigObject)
+BiometricAuthenticator.authenticate('to demo this react-native component', optionalConfigObject)
   .then(success => {
     // Success code
   })
@@ -130,12 +130,12 @@ Using Face ID/Touch ID in your app will usually look like this:
 
 ```js
 import React from "react"
-var TouchID = require('react-native-touch-id');
-//or import TouchID from 'react-native-touch-id'
+var BiometricAuthenticator = require('react-native-biometric-authentication');
+//or import BiometricAuthenticator from 'react-native-biometric-authentication'
 
 class YourComponent extends React.Component {
   _pressHandler() {
-    TouchID.authenticate('to demo this react-native component', optionalConfigObject)
+    BiometricAuthenticator.authenticate('to demo this react-native component', optionalConfigObject)
       .then(success => {
         AlertIOS.alert('Authenticated Successfully');
       })
@@ -192,11 +192,12 @@ const optionalConfigObject = {
   sensorErrorDescription: 'Failed', // Android
   cancelText: 'Cancel', // Android
   fallbackLabel: 'Show Passcode', // iOS (if empty, then label is hidden)
-  unifiedErrors: false, // use unified error messages (default false)
+  unifiedErrors: false, // use unified error messages (default false),
+  showAlert: false, // Android - default set to true
   passcodeFallback: false, // iOS - allows the device to fall back to using the passcode, if faceid/touch is not available. this does not mean that if touchid/faceid fails the first few times it will revert to passcode, rather that if the former are not enrolled, then it will use the passcode.
 };
 
-TouchID.authenticate('to demo this react-native component', optionalConfigObject)
+BiometricAuthenticator.authenticate('to demo this react-native component', optionalConfigObject)
   .then(success => {
     AlertIOS.alert('Authenticated Successfully');
   })
@@ -217,7 +218,7 @@ const optionalConfigObject = {
   passcodeFallback: false // if true is passed, itwill allow isSupported to return an error if the device is not enrolled in touch id/face id etc. Otherwise, it will just tell you what method is supported, even if the user is not enrolled.  (default false)
 }
 
-TouchID.isSupported(optionalConfigObject)
+BiometricAuthenticator.isSupported(optionalConfigObject)
   .then(biometryType => {
     // Success code
     if (biometryType === 'FaceID') {
@@ -333,10 +334,6 @@ Format:
 | `TouchIDError` | User selected fallback not enrolled | `FALLBACK_NOT_ENROLLED` |
 | `TouchIDError` | Unknown error                       | `UNKNOWN_ERROR`         |
 
-## License
 
-Copyright (c) 2015, [Naoufal Kadhom](http://naoufal.com/)
+Copyright (c) 2021, [Shehan Guruge](http://naoufal.com/)
 
-Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
