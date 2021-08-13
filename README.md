@@ -335,5 +335,5 @@ Format:
 | `TouchIDError` | Unknown error                       | `UNKNOWN_ERROR`         |
 
 
-Copyright (c) 2021, [Shehan Guruge](http://naoufal.com/)
+Copyright (c) 2021, [Shehan Guruge]
 
