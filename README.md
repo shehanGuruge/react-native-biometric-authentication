@@ -173,6 +173,7 @@ Returns a `Promise` object.
   - `cancelText` - **Android** - cancel button text
   - `fallbackLabel` - **iOS** - by default specified 'Show Password' label. If set to empty string label is invisible.
   - `unifiedErrors` - return unified error messages (see below) (default = false)
+  - `showAlert` - **Android** - hide the native alert
   - `passcodeFallback` - **iOS** - by default set to false. If set to true, will allow use of keypad passcode.
 
 **Examples**
@@ -225,6 +226,20 @@ BiometricAuthenticator.isSupported(optionalConfigObject)
     // Failure code
     console.log(error);
   });
+```
+
+### cancelAuthentication()
+
+This method is only for **Android** and please perform a Platform check prior using this method. This method will cancel the authentication in case if you have hidden the native pop up. (This method will be available for IOS in future releases) 
+
+**Examples**
+
+```js
+handleOnCancelPressed = () => {
+  if(Platform.OS === "android")
+      BiometricAuthenticator.cancelAuthentication();
+}
+
 ```
 
 ## Errors
