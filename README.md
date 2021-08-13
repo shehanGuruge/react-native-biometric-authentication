@@ -9,21 +9,15 @@ React Native Touch ID is a [React Native](http://facebook.github.io/react-native
 
 Note: the awesome folks over at [Expo](https://expo.io) have begun open-sourcing some of their modules for compatability with React Native projects not built with Expo. As such you can attempt to use their equivalent library called [LocalAuthentication](https://docs.expo.io/versions/v30.0.0/sdk/local-authentication) at [expo-local-authentication](https://www.npmjs.com/package/expo-local-authentication) if you run into any issues here!
 
-![react-native-touch-id](https://cloud.githubusercontent.com/assets/1627824/7975919/2c69a776-0a42-11e5-9773-3ea1c7dd79f3.gif)
-
-#### Breaking changes
-
-Please review all changes in the [Changelog](https://github.com/naoufal/react-native-touch-id/blob/master/CHANGELOG.md)
 
 ## Documentation
 
-- [Install](https://github.com/naoufal/react-native-touch-id#install)
-- [Usage](https://github.com/naoufal/react-native-touch-id#usage)
-- [Example](https://github.com/naoufal/react-native-touch-id#example)
-- [Fallback](https://github.com/naoufal/react-native-touch-id#fallback)
-- [Methods](https://github.com/naoufal/react-native-touch-id#methods)
-- [Errors](https://github.com/naoufal/react-native-touch-id#errors)
-- [License](https://github.com/naoufal/react-native-touch-id#license)
+- [Install](https://github.com/shehanGuruge/react-native-biometric-authentication#install)
+- [Usage](https://github.com/shehanGuruge/react-native-biometric-authentication#usage)
+- [Example](https://github.com/shehanGuruge/react-native-biometric-authentication#example)
+- [Fallback](https://github.com/shehanGuruge/react-native-biometric-authentication#fallback)
+- [Methods](https://github.com/shehanGuruge/react-native-biometric-authentication#methods)
+- [Errors](https://github.com/shehanGuruge/react-native-biometric-authentication#errors)
 
 ## Install
 
